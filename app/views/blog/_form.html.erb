@@ -1,12 +1,13 @@
 <div class = 'container-fluid'>
-  <% if @article.errors.any? %>
-    <% @article.errors.full_messages.each do |message| %>
-      <ul>
-        <li><%= message %></li>
-      </ul>
+  <%= form_with(model: article, url: article_create_path, local:true) do |form| %>
+    <% if article.errors.any? %>
+      <h4><%= pluralize(article.errors.count, "error") %> prohibited this user from being saved:</h4>
+      <% article.errors.full_messages.each do |message| %>
+        <ul>
+          <li><%= message %></li>
+        </ul>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= form_with(model: @article, url: article_create_path) do |form| %>
     <div class ='form-group'>
       <%= form.label 'Title' %>
       <%= form.text_field :title,class:'form-control' %>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/register',to:'sessions#register',as:'register'
   #TODO change add_blog to new 
   get '/add_blog', to:'blog#add_blog', as:'add_blog'
-  post '/article/create', to:'blog#article_create', as:'article_create'
-  get '/article/show', to:'blog#show', as:'show'
+  post '/add_blog', to:'blog#article_create', as:'article_create'
+  get '/article/show/:id', to:'blog#show', as:'show'
+  
+  delete '/article/delete/:id', to:'blog#delete_article', as:'delete_article'
 end
