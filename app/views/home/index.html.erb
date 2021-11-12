@@ -2,18 +2,26 @@
 <!-- START PAGE SOURCE -->
 <p style='color:red;text-align:center;'><%= notice %></p>
 
-<% @articles.each do |article| %> 
-  <div class="article"> 
+<% @articles.each do |article| %>
+  <div class="article">
     <h3><%= article.title %></h3>
-    <p><span class="date">March 16, 2018</span> &nbsp;|&nbsp; Posted by <a href="#">Owner</a> &nbsp;|&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a></p>
+    <p>
+      <span class="date">March 16, 2018</span> &nbsp;|&nbsp; Posted by
+      <a href="#"><%= User.find(article.user_id).username %></a> &nbsp;|&nbsp; Filed under <a href="#">templates</a>,
+      <a href="#">internet</a>
+    </p>
     <p><%= article.content %></p>
     <p class="spec">
-      <%= link_to 'read more..', show_path(article.id) %> &nbsp;|&nbsp; 
-      <%= link_to "comments#{3}", show_path(article.id) %> &nbsp;|&nbsp;
-      <%= link_to "delete", delete_article_path(article.id), method: :delete, data: {confirm:'Are you sure?'}%>
+      <%= link_to 'read more..', article_show_path(article.id) %>
+      &nbsp;|&nbsp;<%= link_to "comments(#{3})", article_show_path(article.id) %>
+      <% if current_user && current_user.id == article.user_id %>
+         &nbsp;|&nbsp;<%= link_to "edit", article_edit_path(article.id) %>
+         &nbsp;|&nbsp;<%= link_to "delete", delete_article_path(article.id), method: :delete, data: {confirm:'Are you sure?'}%>
+      <% end %>
     </p>
   </div>
 <% end %>
+<%= will_paginate @articles %>
 
 <style>
 </style>

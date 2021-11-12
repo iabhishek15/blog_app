@@ -1,10 +1,45 @@
 class SessionsController < ApplicationController
-  def login 
-  end 
+  def login
+    #byebug
+  end
+
+  def new
+    user = User.find_by_username(params[:username])
+    #TODO what does authenticate do?
+    if user && user.authenticate(params[:password])
+      session[:id] = user.id
+      redirect_to home_url, notice: 'Logged In!'
+      #byebug
+    else
+      flash[:alert] = 'Email or Password is Invalid'
+      render :login
+      #render :login
+      #byebug
+    end
+  end
 
   def register
-  end 
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+    respond_to do |format|
+      if @user.save
+        format.html {redirect_to login_url, notice: 'User was successfully created'}
+      else
+        format.html {render :register, status: :unprocessable_entity}
+      end
+    end
+  end
 
   def logout
+    session[:id] = nil
+    redirect_to home_url, notice: 'You are logged out!'
   end
-end 
+
+  private
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation)
+  end
+end
