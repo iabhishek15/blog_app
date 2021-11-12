@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def register
+  def signup
     @user = User.new
   end
 

@@ -1,5 +1,5 @@
-class BlogController < ApplicationController
-  def add_blog
+class ArticleController < ApplicationController
+  def new
     if current_user
       @article = Article.new
     else
@@ -11,21 +11,21 @@ class BlogController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def article_create
+  def create
     @article = Article.new(article_params)
     respond_to do |format|
       if @article.save
         format.html {redirect_to "/article/show/#{@article.id}", notice:'Article was successfully created!'}
         format.json {render :show, status: :created, location:@article}
       else
-        format.html {render :add_blog, status: :unprocessable_entity}
+        format.html {render :new, status: :unprocessable_entity}
         format.json {render json: @article.errors, status: :unprocessable_entity }
         #byebug
       end
     end
   end
 
-  def delete_article
+  def delete
     @article = Article.find(params[:id])
     #byebug
     @article.destroy

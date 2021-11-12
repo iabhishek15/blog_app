@@ -16,7 +16,7 @@
       &nbsp;|&nbsp;<%= link_to "comments(#{3})", article_show_path(article.id) %>
       <% if current_user && current_user.id == article.user_id %>
          &nbsp;|&nbsp;<%= link_to "edit", article_edit_path(article.id) %>
-         &nbsp;|&nbsp;<%= link_to "delete", delete_article_path(article.id), method: :delete, data: {confirm:'Are you sure?'}%>
+         &nbsp;|&nbsp;<%= link_to "delete", article_delete_path(article.id), method: :delete, data: {confirm:'Are you sure?'}%>
       <% end %>
     </p>
   </div>
