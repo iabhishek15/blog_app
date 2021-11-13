@@ -1,13 +1,17 @@
-<p class='notice'><%= notice %></p>
-<div class="login-container">
+<p class='text-success'><%= notice %></p>
+<p class="text-danger"><%= alert %></p>
+<div class="signup-container">
   <h3>Signup</h3>
   <%= form_with(model:@user, url:signup_path, local:true) do |form| %>
     <div id="error_explanation">
       <% if @user.errors.any? %>
-        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+        <h4 class='text-danger error_heading'><span class="glyphicon glyphicon-alert text-danger"></span>
+          <%= pluralize(@user.errors.count, "error") %> have occurred.</h4>
+        <ul class="signup-error">
+          <% @user.errors.full_messages.each_with_index do |message, index| %>
+            <li class="text-danger">
+              <%= index + 1 %>) <%= message %>
+            </li>
           <% end %>
         </ul>
       <% end %>
@@ -22,7 +26,7 @@
       <%= form.password_field :password_confirmation, class:'form-control', placeholder:'Confirm Password'%>
     </div>
     <div class="form-group">
-      <%= form.submit 'Signup', class:'btn btn-primary' %>
+      <%= form.submit 'Signup', class:'btn btn-default' %>
     </div>
     <div class="form-group">
       <% link_to 'Forget Password?', class:"ForgetPwd" %>
@@ -40,8 +44,8 @@ h3{
   color: #333;
 }
 
-.login-container form{
-  padding: 10%;
+.signup-container form{
+  padding: 3%;
 }
 .btnSubmit {
   width: 50%;
@@ -59,5 +63,12 @@ h3{
   color: #0062cc;
   font-weight: 600;
   text-decoration: none;
+}
+.signup-error li{
+  list-style: none;
+  text-align:left;
+}
+.error_heading{
+  text-align:left;
 }
  </style>

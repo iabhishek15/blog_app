@@ -113,7 +113,7 @@
         <% @articles.limit([5, @articles.count].min).order('created_at DESC').each do |article| %>
           <li class='list-group-item'> <!-- article_show_path(article.id) -->
             <%= link_to "#{article.title}", article_show_path(article.id) %><br />
-            <span>November 2021 | posted by <%= User.find(article.user_id).username %></span>
+            <span class='subHeading'>November 2021 | posted by <%= User.find(article.user_id).username %></span>
           </li>
         <% end %>
         </ul>

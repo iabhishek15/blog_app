@@ -1,14 +1,25 @@
-<p id = "creationNotice"><%= notice %></p>
+<p class="text-success"><%= notice %></p>
 
 <h3><%= @article.title %></h3>
 
 <p><%= @article.content %></p>
 
-<%= render 'comment/form', comment:@comment, article_id: @article.id, action_path:comment_new_path %>
+<% if current_user %>
+  <%= render 'comment/form', comment:Comment.new, article_id: @article.id, action_path:comment_new_path %>
+<% else %>
+  <p class="alert-danger">Please login to write a comment!</p>
+<% end %>
+<br />
 
-<style>
-  #creationNotice {
-    color:green;
-    text-align:center;
-  }
-</style>
+<ul class='list-group'>
+  <% if @comments %>
+    <% @comments.each do |comment| %>
+      <li class='list-group-item' style="border:none;"><%= comment.content %><br />
+        <span class="subHeading">posted by : <%= User.find(comment.user_id).username %>
+        <% if current_user && current_user.id == comment.user_id %>
+          | <%= link_to 'Delete', comment_delete_path(comment.id), method: :delete, data: {confirm: 'Are you sure you want to delete your comment?'} %></span>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

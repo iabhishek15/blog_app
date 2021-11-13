@@ -10,14 +10,15 @@ class ArticleController < ApplicationController
   def show
     #TODO what if id does not exits
     @article = Article.find(params[:id])
-    @comment = Comment.new
+    #TODO what is all the model comment getting printed
+    @comments = Comment.where(article_id: params[:id])
   end
 
   def create
     @article = Article.new(article_params)
     respond_to do |format|
       if @article.save
-        format.html {redirect_to "/article/show/#{@article.id}", notice:'Article was successfully created!'}
+        format.html {redirect_to article_show_path(:id => @article.id), notice:'Article was successfully created!'}
         format.json {render :show, status: :created, location:@article}
       else
         format.html {render :new, status: :unprocessable_entity}
@@ -45,7 +46,7 @@ class ArticleController < ApplicationController
     @article = Article.find(params[:id])
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to "/article/show/#{@article.id}", notice: "Article was successfully updated." }
+        format.html { redirect_to article_show_path(:id => @article.id), notice: "Article was successfully updated." }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -14,16 +14,11 @@
     </div>
     <div class ='form-group'>
       <%= form.label 'Content'%>
-      <%= form.text_area :content,class:'form-control',id:'articleContent' %>
+      <%= form.text_area :content,class:'form-control', rows:13, id:'articleContent' %>
     </div>
     <div hidden>
       <%= form.number_field :user_id, value:current_user.id %>
     </div>
-    <%= form.submit 'post',class:'btn btn-primary'%>
+    <%= form.submit 'post',class:'btn btn-default'%>
   <% end %>
 </div>
-<style>
-  #articleContent {
-    height:300px;
-  }
-</style>

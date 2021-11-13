@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
     #TODO what does authenticate do?
     if user && user.authenticate(params[:password])
-      puts "is someway this code running"
       session[:id] = user.id
       redirect_to home_url, notice: 'Logged In!'
       #byebug
@@ -35,7 +34,7 @@ class SessionsController < ApplicationController
       if @user.save
         format.html {redirect_to login_url, notice: 'User was successfully created'}
       else
-        format.html {render :register, status: :unprocessable_entity}
+        format.html {render :signup, status: :unprocessable_entity}
       end
     end
   end
