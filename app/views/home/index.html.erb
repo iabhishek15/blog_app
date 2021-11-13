@@ -7,8 +7,7 @@
     <h3><%= article.title %></h3>
     <p>
       <span class="date">March 16, 2018</span> &nbsp;|&nbsp; Posted by
-      <a href="#"><%= User.find(article.user_id).username %></a> &nbsp;|&nbsp; Filed under <a href="#">templates</a>,
-      <a href="#">internet</a>
+      <a href="#"><%= User.find(article.user_id).username %></a>
     </p>
     <p><%= article.content %></p>
     <p class="spec">
@@ -24,4 +23,7 @@
 <%= will_paginate @articles %>
 
 <style>
+.home {
+  background-color: white;
+}
 </style>

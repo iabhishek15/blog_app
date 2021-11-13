@@ -4,6 +4,7 @@
 
 <p><%= @article.content %></p>
 
+<%= render 'comment/form', comment:@comment, article_id: @article.id, action_path:comment_new_path %>
 
 <style>
   #creationNotice {

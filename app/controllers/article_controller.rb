@@ -8,7 +8,9 @@ class ArticleController < ApplicationController
   end
 
   def show
+    #TODO what if id does not exits
     @article = Article.find(params[:id])
+    @comment = Comment.new
   end
 
   def create

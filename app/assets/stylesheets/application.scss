@@ -1,0 +1,145 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* everything */
+* {
+  color:#696969;
+}
+body {
+  background-color:#deddd7;
+}
+
+/* link */
+a {
+  color: #ad9156;
+}
+a:hover {
+  color: #ad9156;
+}
+
+/* container */
+.container {
+  padding:20px;
+}
+
+h1, h2, h3, h4, h5 {
+  color:#525252;
+}
+
+
+/*logo*/
+.logo {
+  margin-left:50px;
+}
+.logo a {
+  text-decoration:none;
+  color:#fff;
+}
+.logo p {
+  font-size:16px;
+}
+
+
+
+/* nav */
+.navbar {
+  border:none;
+}
+#nav {
+  font-size:15px;
+  width:80%;
+  margin-bottom:-20px;
+  border-radius:10px 10px 0px 0px;
+}
+#nav a {
+  margin-right:1.5px;
+}
+#nav a:hover {
+  color: #ad9156;
+  background-color: white;
+}
+.navbar, #nav {
+  /* background-color:#222; */
+  background-color:lightgray;
+}
+@media  (min-width: 700px) and (max-width: 1000px) {
+   .collapse {
+       display: none !important;
+   }
+}
+
+
+
+
+/* Main Container*/
+#mainContainer {
+  background-color:white;
+  width:80%;
+  border-radius:0px 0px 10px 10px;
+  /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19); */
+}
+#mainContent {
+  width:100%;
+}
+
+/* sidebar categories */
+.sb_menu li {
+  padding:5px;
+  margin:0px;
+  border:none;
+  border-bottom:1px solid gainsboro;
+}
+.sb_menu a {
+  color:#696969;
+}
+.sb_menu a:hover {
+  color: #ad9156;
+}
+/* recent leftbar */
+.recent_menu li {
+  border:none;
+  border-bottom:1px solid gainsboro;
+  padding-left:0px;
+  margin:0px;
+  color: #ad9156;
+  font-size:15px;
+}
+.recent_menu li span {
+  font-size:13px;
+  color:darkgray;
+}
+
+
+/*footer*/
+
+.footer {
+  width:80%;
+  background-color:white;
+  margin-top:30px;
+  border-radius:10px 10px 10px 10px;
+}
+
+/*categories footer*/
+.ft_cat {
+  width:80%;
+}
+.foot {
+   padding:10px;
+   width:80%;
+ }
+ .foot .rf{
+   float:right;
+ }

@@ -1,13 +1,30 @@
 class HomeController < ApplicationController
+
   def index
-    @articles = Article.paginate(page: params[:page], per_page:10)
+
+  end
+  def about
+  end
+  def contact
+
+  end
+  def support
   end
 end
 
+=begin
+<% @articles.limit(3).order('created_at DESC').each do |article| %>
+  <li>
+    <%= link_to do %>
+       <%= article.title %>
+    <% end %>
+  </li>
+<% end %>
+=end
+
+
 
 =begin
-
-
 
 <%= form_with(local:true,class:'navbar-form navbar-left') do |form| %>
   <div class="input-group">

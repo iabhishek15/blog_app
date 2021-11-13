@@ -29,4 +29,7 @@ Rails.application.routes.draw do
   #account
   get '/account', to:'user_account#index', as:'account'
   delete '/account', to:'user_account#delete', as:'account_delete'
+
+  #comments
+  post '/comment/new', to:'comment#new',as:'comment_new'
 end

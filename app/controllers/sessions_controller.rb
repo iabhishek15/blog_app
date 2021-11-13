@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   def login
+    if current_user
+      redirect_to home_path
+    end
     #byebug
   end
 
@@ -7,6 +10,7 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
     #TODO what does authenticate do?
     if user && user.authenticate(params[:password])
+      puts "is someway this code running"
       session[:id] = user.id
       redirect_to home_url, notice: 'Logged In!'
       #byebug
@@ -19,6 +23,9 @@ class SessionsController < ApplicationController
   end
 
   def signup
+    if current_user
+      return redirect_to home_path
+    end
     @user = User.new
   end
 
