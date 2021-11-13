@@ -11,7 +11,7 @@
       <span class="date">March 16, 2018</span> &nbsp;|&nbsp; Posted by
       <a href="#"><%= User.find(article.user_id).username %></a>
     </p>
-    <p><%= article.content %></p>
+    <p class='article-content'><%= article.content %></p>
     <p class="spec">
       <%= link_to 'read more..', article_show_path(article.id) %>
       &nbsp;|&nbsp;<%= link_to "comments (#{Comment.where(article_id: article.id).count})", article_show_path(article.id) %>
@@ -27,5 +27,9 @@
 <style>
 .home {
   background-color: white;
+}
+.article-content {
+  max-height:100px;
+  overflow:hidden;
 }
 </style>
