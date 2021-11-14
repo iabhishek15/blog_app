@@ -1,0 +1,33 @@
+
+<div class = 'container' id = 'mainContainer'>
+  <div class = 'row'>
+    <% #content %>
+    <div class = 'col-sm-9' id = 'content'>
+      <%= yield %>
+    </div>
+     <% #sidebar %>
+    <div class = 'col-sm-3'>
+      <div class="gadget">
+        <h3 class="star"><span>Categories</span></h3>
+        <ul class="list-group list-group-flush sb_menu">
+          <li class = "list-group-item"><a href="#">Education</a></li>
+          <li class = "list-group-item"><a href="#">Entertainment</a></li>
+          <li class = "list-group-item"><a href="#">Sports</a></li>
+          <li class = "list-group-item"><a href="#">Fashion</a></li>
+          <li class = "list-group-item"><a href="#">News</a></li>
+        </ul>
+      </div>
+      <div class="gadget">
+        <h3 class="star"><span>Recent Blogs</span></h3>
+        <ul class="list-group recent_menu">
+        <% @articles_side.each do |article| %>
+          <li class='list-group-item'> <!-- article_show_path(article.id) -->
+            <%= link_to "#{article.title}", article_show_path(article.id) %><br />
+            <span class='subHeading'>November 2021 | posted by <%= User.find(article.user_id).username %></span>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

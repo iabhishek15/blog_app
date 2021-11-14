@@ -33,4 +33,8 @@ Rails.application.routes.draw do
   #comments
   post '/comment/new', to:'comment#new',as:'comment_new'
   delete '/comment/delete/:id', to:'comment#delete', as:'comment_delete'
+
+  #searching user
+  get '/search/user/articles', to:'home#search_user', as:'search_user'
+
 end

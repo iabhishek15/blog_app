@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
   private
   def set_articles
-    @articles = Article.paginate(page: params[:page], per_page:10)
+    @articles_side =  Article.limit([5, Article.count].min).order('created_at DESC')
   end
   #TODO this is done so that flash[:alert] is set to empty string so that error message of login is not showed in signup
   def set_flash_nil
