@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       redirect_to home_url, notice: 'Logged In!'
       #byebug
     else
-      flash[:alert] = 'Email or Password is Invalid'
+      flash[:alert] = 'Username or Password is Invalid'
       render :login
       #render :login
       #byebug
