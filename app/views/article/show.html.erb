@@ -4,6 +4,20 @@
 
 <p><%= @article.content %></p>
 
+<p>
+  <span class="date article-sub">March 16, 2021  &nbsp;|&nbsp; Posted by
+    <a href="#"><%= User.find(@article.user_id).username %></a>
+  </span>
+</p>
+
+<p>
+  <% if current_user && current_user.id == @article.user_id %>
+     <%= link_to "edit", article_edit_path(@article.id) %>
+     &nbsp;|&nbsp;<%= link_to "delete", article_delete_path(@article.id), method: :delete, data: {confirm:'Are you sure?'}%>
+  <% end %>
+</p>
+<br />
+
 <% if current_user %>
   <%= render 'comment/form', comment:Comment.new, article_id: @article.id, action_path:comment_new_path %>
 <% else %>
