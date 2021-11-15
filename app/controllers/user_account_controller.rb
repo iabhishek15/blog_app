@@ -8,6 +8,6 @@ class UserAccountController < ApplicationController
     #byebug
     session[:user_id] = nil
     current_user.destroy
-    redirect_to signup_url, success_notice: "Your Account was successfully deleted!"
+    redirect_to signup_url, notice: "Your Account was successfully deleted!"
   end
 end
