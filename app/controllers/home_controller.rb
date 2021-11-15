@@ -1,22 +1,21 @@
 class HomeController < ApplicationController
 
   def index
-    puts "*****************************Is Index getting called"
     @articles = Article.paginate(page: params[:page], per_page:10).order('created_at DESC')
   end
 
   def search_user
-    puts "******************************search user is getting called"
-    user = User.find_by_username(params[:username])
-    if user
-      @articles = Article.where(:user_id => user.id).paginate(page: params[:page], per_page:10).order('created_at DESC')
-      render :index
-    else
-      flash.now[:alert] = 'No such user exits!'
-      @articles = nil
-      render :index
-      byebug
-    end
+    redirect_to home_path
+    # logger.info "******************************search user is getting called"
+    # user = User.find_by_username(params[:username])
+    # if user
+    #   @articles = Article.where(:user_id => user.id).paginate(page: params[:page], per_page:10).order('created_at DESC')
+    #   render :index
+    # else
+    #   flash.now[:alert] = 'No such user exits!'
+    #   @articles = nil
+    #   render :index
+    # end
   end
 
   def about
