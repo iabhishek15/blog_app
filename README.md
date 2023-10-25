@@ -1,6 +1,6 @@
 # Blog App
 
-Website link - 
+Website link - https://intense-dawn-71889.herokuapp.com/ (website down due to free plan expiration)
 
 ## Features of Blog App
 
